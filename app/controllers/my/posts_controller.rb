@@ -22,6 +22,7 @@ module My
         end
       in Failure[error_code, errors]
         @post = current_my_user.posts.new(post_params)
+        @errors = errors
         render :new
       end
     end

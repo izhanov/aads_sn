@@ -14,7 +14,9 @@ module Operations
 
         def validate(params)
           validation = Validations::My::Posts::Create.new.call(params)
-          validation.to_monad
+          validation
+            .to_monad
+            .or { |failure| Failure[:validation_error, failure.errors.to_h] }
         end
 
         def commit(params)
