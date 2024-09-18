@@ -14,7 +14,7 @@
     <header>
       <nav class="navbar navbar-expand-lg">
         <div class="container container-fluid">
-          <%= link_to t(".brand"), root_path, class: "navbar-brand" %>
+          <%= link_to t(".brand"), my_root_path, class: "navbar-brand" %>
 
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -26,6 +26,12 @@
                 <%= link_to t(".about"), "#", class: "nav-link" %>
               </li>
             </ul>
+
+            <%- if my_user_signed_in? %>
+              <div class="d-flex g-3">
+                <%= link_to t(".signout"), destroy_my_user_session_path, class: "btn btn-danger me-2", data: {turbo_method: :delete} %>
+              </div>
+            <% end %>
           </div>
         </div>
       </nav>
