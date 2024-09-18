@@ -2,6 +2,8 @@
 
 module My
   class WelcomeController < My::BaseController
-    def index; end
+    def index
+      @posts = current_my_user.posts.reorder(id: :desc)
+    end
   end
 end

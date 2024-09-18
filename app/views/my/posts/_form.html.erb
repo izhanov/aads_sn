@@ -1,0 +1,16 @@
+<%= turbo_frame_tag post do %>
+  <%= form_with model: [:my, post] do |f| %>
+    <%= f.hidden_field :user_id, value: f.object.user_id %>
+
+    <%= f.label :title, class: "form-label" %>
+    <%= f.text_field :title, class: "form-control" %>
+
+    <%= f.label :content, class: "form-label" %>
+    <%= f.text_area :content, class: "form-control" %>
+
+    <div class="mt-2">
+      <%= f.submit t(".submit"), class: "btn btn-success btn-sm" %>
+      <%= link_to t(".cancel"), my_root_path, class: "btn btn-outline-secondary btn-sm" %>
+    </div>
+  <% end %>
+<% end %>

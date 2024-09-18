@@ -1,0 +1,8 @@
+en:
+  my:
+    posts:
+      new:
+        title: "New post"
+      form:
+        submit: "Submit"
+        cancel: "Cancel"

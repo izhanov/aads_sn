@@ -1,0 +1,9 @@
+ru:
+  my:
+    posts:
+      new:
+        title: "Новый пост"
+      form:
+        submit: "Опубликовать"
+        cancel: "Отмена"
+

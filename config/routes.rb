@@ -10,5 +10,7 @@ Rails.application.routes.draw do
       sessions: "my/sessions",
       registrations: "my/registrations"
     }
+
+    resources :posts
   end
 end
