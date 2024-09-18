@@ -1,6 +1,10 @@
 en:
   my:
     posts:
+      index:
+        title: "Posts"
+        new_post: "New post"
+        back: "Back"
       new:
         title: "New post"
       form:

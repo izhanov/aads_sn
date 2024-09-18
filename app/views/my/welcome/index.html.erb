@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-2">
       <nav class="nav flex-column">
-        <%= link_to "My Posts", "#", class: "nav-link" %>
+        <%= link_to "My Posts", my_posts_path, class: "nav-link" %>
         <%= link_to "My Followers", "#", class: "nav-link" %>
         <%= link_to "My Following", "#", class: "nav-link" %>
       </nav>
@@ -18,7 +18,7 @@
         </div>
         <div class="col-6">
           <div class="d-flex justify-content-end">
-            <%= link_to "New Post", new_my_post_path, class: "btn btn-primary", data: { turbo_frame: dom_id(Post.new) } %>
+            <%= link_to t(".new_post"), new_my_post_path, class: "btn btn-primary", data: { turbo_frame: dom_id(Post.new) } %>
           </div>
 
           <%= turbo_frame_tag Post.new %>

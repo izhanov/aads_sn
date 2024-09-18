@@ -2,6 +2,10 @@
 
 module My
   class PostsController < My::BaseController
+    def index
+      @posts = current_my_user.posts.reorder(id: :desc)
+    end
+
     def new
       @post = current_my_user.posts.new
     end

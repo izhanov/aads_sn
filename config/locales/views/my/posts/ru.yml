@@ -1,6 +1,10 @@
 ru:
   my:
     posts:
+      index:
+        title: "Посты"
+        new_post: "Новый пост"
+        back: "Назад"
       new:
         title: "Новый пост"
       form:

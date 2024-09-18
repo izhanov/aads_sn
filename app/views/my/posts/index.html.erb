@@ -1,0 +1,12 @@
+<div class="d-flex align-items-center">
+  <h1><%= t(".title") %></h1>
+
+  <div class="ms-3">
+    <%= link_to t(".back"), my_root_path, class: "btn btn-secondary" %>
+    <%= link_to t(".new_post"), new_my_post_path, class: "btn btn-primary" %>
+  </div>
+</div>
+
+<div class="container">
+  <%= render @posts %>
+</div>
