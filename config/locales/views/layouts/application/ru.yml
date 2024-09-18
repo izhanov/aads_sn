@@ -1,0 +1,7 @@
+ru:
+  layouts:
+    application:
+      brand: "AADS - Крипто-система"
+      about: "О нас"
+      signup: "Регистрация"
+      signin: "Вход"

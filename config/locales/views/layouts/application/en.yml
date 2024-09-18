@@ -1,0 +1,7 @@
+en:
+  layouts:
+    application:
+      brand: "AADS"
+      about: "About"
+      signup: "Sign up"
+      signin: "Sign in"
