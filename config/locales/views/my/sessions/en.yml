@@ -1,0 +1,6 @@
+en:
+  my:
+    sessions:
+      new:
+        title: "Sign in"
+        submit: "Submit"

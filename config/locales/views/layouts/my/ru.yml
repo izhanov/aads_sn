@@ -1,0 +1,7 @@
+ru:
+  layouts:
+    my:
+      brand: "AADS"
+      about: "О нас"
+      signup: "Регистрация"
+      signin: "Вход"

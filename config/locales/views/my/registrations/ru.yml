@@ -1,0 +1,6 @@
+ru:
+  my:
+    registrations:
+      new:
+        title: "Регистрация"
+        submit: "Сохранить"

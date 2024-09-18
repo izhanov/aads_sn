@@ -1,0 +1,6 @@
+ru:
+  my:
+    sessions:
+      new:
+        title: "Вход"
+        submit: "Submit"

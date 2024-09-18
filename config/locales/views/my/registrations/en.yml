@@ -1,0 +1,6 @@
+en:
+  my:
+    registrations:
+      new:
+        title: "Sign up"
+        submit: "Submit"

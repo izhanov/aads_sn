@@ -2,7 +2,7 @@
 import "@hotwired/turbo-rails"
 
 // Import the controllers from the application.js file
-import "./src/application/js/controllers"
+import "./src/my/js/controllers"
 
-// Import Bootstraps
+// Import Bootstrap
 import * as bootstrap from "bootstrap"
