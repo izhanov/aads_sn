@@ -37,6 +37,9 @@ module AadsSn
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Don't generate system test files.
+    config.i18n.load_path += Dir[Rails.root.join("config", "locales", "**", "*.{rb,yml}")]
+    config.i18n.available_locales = %i[en ru]
+
     config.generators.system_tests = nil
   end
 end
