@@ -4,10 +4,10 @@ module Operations
   module My
     module Comments
       class Create < Operations::Base
-        def call(author:, commentable:, content:)
+        def call(author:, commentable:, content:, parent: nil)
           yield can_comment?(author, commentable)
           yield validate(content)
-          comment = yield commit(author, commentable, content)
+          comment = yield commit(author, commentable, content, parent)
           Success(comment)
         end
 
@@ -25,8 +25,8 @@ module Operations
           end
         end
 
-        def commit(author, commentable, content)
-          comment = commentable.comments.create!(author: author, content: content)
+        def commit(author, commentable, content, parent)
+          comment = commentable.comments.create!(author: author, content: content, parent: parent)
           Success(comment)
         end
       end
