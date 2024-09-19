@@ -4,11 +4,11 @@ module Operations
   class Base
     include Dry::Monads[:result, :do]
 
-    def self.run(*args)
-      new.call(*args)
+    def self.run(*args, **kwargs)
+      new.call(*args, **kwargs)
     end
 
-    def call(*args)
+    def call(*args, **kwargs)
       raise NotImplementedError
     end
   end
