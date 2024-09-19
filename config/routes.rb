@@ -12,5 +12,8 @@ Rails.application.routes.draw do
     }
 
     resources :posts
+
+    resources :followed, only: %i[index create destroy], controller: "user_followers"
+    resources :followers, only: %i[index create destroy], controller: "user_followers"
   end
 end
