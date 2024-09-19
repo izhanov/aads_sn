@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="card-body">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+        <div class="ms-3">
+          <%= link_to my_follower_path(follower), class: "text-dark" do %>
+            <h5 class="mb-0"><%= follower.name %></h5>
+          <% end %>
+          <p class="mb-0"><%= follower.email %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

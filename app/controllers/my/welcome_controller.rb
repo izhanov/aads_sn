@@ -3,7 +3,10 @@
 module My
   class WelcomeController < My::BaseController
     def index
-      @posts = current_my_user.posts.reorder(id: :desc)
+      @followed = current_my_user.
+        followed.includes(:posts).
+        where(user_follows: {status: "APPROVED"}).order("posts.created_at DESC")
+      @followed_posts = @followed.map(&:posts).flatten
     end
   end
 end

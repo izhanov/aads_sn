@@ -20,13 +20,14 @@ module Operations
         end
 
         def followed?(followed, follower)
-          return Success(true) if follower.followed.approved.find_by(followed: followed)
-
+          follower.followed.where(user_follows: { status: 'APPROVED' }).find(followed.id)
+          Success(true)
+        rescue ActiveRecord::RecordNotFound
           Failure[:not_following, 'You are not following this user']
         end
 
         def commit(followed, follower)
-          follower.followed.find_by(followed: followed).delete
+          follower.user_followed.find_by!(followed: followed, status: 'APPROVED').destroy!
           Success(true)
         end
       end

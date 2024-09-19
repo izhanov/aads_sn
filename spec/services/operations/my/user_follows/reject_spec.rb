@@ -8,7 +8,7 @@ RSpec.describe Operations::My::UserFollows::Reject do
         operation = described_class.run(follower_id: followed.id, followed: followed)
 
         expect(operation).to be_failure
-        expect(operation.failure).to match_array([:self_following, "You cannot reject yourself"])
+        expect(operation.failure).to match_array([:follower_not_found, "Follower not found"])
       end
     end
 
@@ -20,7 +20,7 @@ RSpec.describe Operations::My::UserFollows::Reject do
         operation = described_class.run(follower_id: follower.id, followed: followed)
 
         expect(operation).to be_failure
-        expect(operation.failure).to match_array([:not_following, "Follower not follow this user"])
+        expect(operation.failure).to match_array([:follower_not_found, "Follower not found"])
       end
     end
 
@@ -28,7 +28,7 @@ RSpec.describe Operations::My::UserFollows::Reject do
       it "returns a success" do
         follower = create(:user)
         followed = create(:user)
-        followed.followers.create!(follower: follower)
+        followed.user_followers.create!(follower: follower)
 
         operation = described_class.run(follower_id: follower.id, followed: followed)
 

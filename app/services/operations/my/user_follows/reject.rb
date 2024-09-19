@@ -5,17 +5,15 @@ module Operations
     module UserFollows
       class Reject < Operations::Base
         def call(follower_id:, followed:)
-          follower = yield find_follower(follower_id)
-          yield not_self?(followed, follower)
-          follows = yield find_follows(follower, followed)
-          yield commit(follows)
+          follower = yield find_follower(follower_id, followed)
+          yield commit(follower, followed)
           Success(follower)
         end
 
         private
 
-        def find_follower(follower_id)
-          follower = User.find(follower_id)
+        def find_follower(follower_id, followed)
+          follower = followed.followers.where(user_follows: {status: "PENDING"}).find(follower_id)
           Success(follower)
         rescue ActiveRecord::RecordNotFound
           Failure[:follower_not_found, "Follower not found"]
@@ -28,13 +26,14 @@ module Operations
         end
 
         def find_follows(follower, followed)
-          follows = follower.followed.pending.find_by!(followed: followed)
+          follows = follower.followed.where(user_follows: {status: "PENDING"}).find(followed.id)
           Success(follows)
         rescue ActiveRecord::RecordNotFound
           Failure[:not_following, "Follower not follow this user"]
         end
 
-        def commit(follows)
+        def commit(follower, followed)
+          follows = followed.user_followers.find_by!(follower: follower, status: "PENDING")
           follows.update!(status: "REJECTED")
           Success(true)
         end

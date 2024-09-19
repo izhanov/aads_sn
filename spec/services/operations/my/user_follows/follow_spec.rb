@@ -26,7 +26,7 @@ RSpec.describe Operations::My::UserFollows::Follow do
       it "returns a failure" do
         follower = create(:user)
         followed = create(:user)
-        followed.followers.create!(follower: follower)
+        followed.user_followers.create!(follower: follower)
 
         operation = described_class.run(followed_id: followed.id, follower: follower)
 

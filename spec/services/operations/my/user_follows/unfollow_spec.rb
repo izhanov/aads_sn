@@ -28,7 +28,7 @@ RSpec.describe Operations::My::UserFollows::Unfollow do
       it "returns a success" do
         follower = create(:user)
         followed = create(:user)
-        followed.followers.create!(follower: follower, status: "APPROVED")
+        followed.user_followers.create!(follower: follower, status: "APPROVED")
 
         operation = described_class.run(followed: followed, follower: follower)
 

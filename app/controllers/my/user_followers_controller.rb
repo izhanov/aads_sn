@@ -3,11 +3,15 @@
 module My
   class UserFollowersController < My::BaseController
     def index
-      @followers = current_my_user.followers
+      @followers = current_my_user.followers.includes(:posts)
+    end
+
+    def show
+      @follower = current_my_user.followers.includes(:posts).find(params[:id])
     end
 
     def create
-      operation = Operations::My::UserFollows::Accept.run(follower_id: params[:follower_id], followed: current_my_user)
+      operation = Operations::My::UserFollows::Accept.run(follower_id: params[:id], followed: current_my_user)
 
       case operation
       in Success[follower]
@@ -18,7 +22,7 @@ module My
     end
 
     def destroy
-      operation = Operations::My::UserFollows::Reject.run(follower_id: params[:follower_id], followed: current_my_user)
+      operation = Operations::My::UserFollows::Reject.run(follower_id: params[:id], followed: current_my_user)
 
       case operation
       in Success[follower]

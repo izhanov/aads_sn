@@ -5,15 +5,15 @@
     <div class="col-2">
       <nav class="nav flex-column">
         <%= link_to "My Posts", my_posts_path, class: "nav-link" %>
-        <%= link_to "My Followers", "#", class: "nav-link" %>
-        <%= link_to "My Following", "#", class: "nav-link" %>
+        <%= link_to "My Followers", my_followers_path, class: "nav-link" %>
+        <%= link_to "My Following", my_followed_index_path, class: "nav-link" %>
       </nav>
     </div>
     <div class="col-10">
       <div class="row">
         <div class="col-6">
           <%= turbo_frame_tag "posts" do %>
-            <%= render @posts %>
+            <%= render @followed_posts %>
           <% end %>
         </div>
         <div class="col-6">

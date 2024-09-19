@@ -27,7 +27,7 @@ module Operations
         end
 
         def commit(followed, follower)
-          followed.followers.create!(follower: follower)
+          follower.user_followed.create!(followed: followed)
           Success(true)
         rescue ActiveRecord::RecordNotUnique
           Failure[:already_following, 'You are already following this user']

@@ -3,11 +3,15 @@
 module My
   class UserFollowedController < My::BaseController
     def index
-      @followed = current_my_user.followed
+      @followed = current_my_user.followed.includes(:posts)
+    end
+
+    def show
+      @followed = current_my_user.followed.includes(:posts).find(params[:id])
     end
 
     def create
-      operation = Operations::My::UserFollows::Follow.run(followed_id: params[:followed_id], follower: current_my_user)
+      operation = Operations::My::UserFollows::Follow.run(followed_id: params[:id], follower: current_my_user)
 
       case operation
       in Success[followed]
@@ -31,7 +35,7 @@ module My
     private
 
     def followed
-      @followed ||= User.find(params[:followed_id])
+      @followed ||= User.find(params[:id])
     end
   end
 end

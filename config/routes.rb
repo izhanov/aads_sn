@@ -11,9 +11,9 @@ Rails.application.routes.draw do
       registrations: "my/registrations"
     }
 
+    resources :users, only: %i[show]
     resources :posts
-
-    resources :followed, only: %i[index create destroy], controller: "user_followers"
-    resources :followers, only: %i[index create destroy], controller: "user_followers"
+    resources :followed, only: %i[index show create destroy], controller: "user_followed"
+    resources :followers, only: %i[index show create destroy], controller: "user_followers"
   end
 end
